@@ -1,0 +1,944 @@
+/*
+Theme Name: _tk
+Author: iAPT
+Author URI: http://www.iapt4u.com
+Description: Video sharing website created by iapt4u.com
+Version: 1.0.0
+Tags: gray, light, two-columns, right-sidebar, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, featured-images, flexible-header, sticky-post,  theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+This theme is the most seamless and minimalistic integration of Twitter Bootstrap Framework into
+the _s starter theme from Automattic, the guys behind WordPress.
+
+_s (or Underscores) http://underscores.me/, (C) 2012-2013 Automattic, Inc. Twitter Bootstrap
+
+Credits:
+
+1. Bootstrap
+
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=f58353a31151a8c05d7c)
+ * Config saved to config.json and https://gist.github.com/f58353a31151a8c05d7c
+
+2. wp_bootstrap_navwalker
+
+* Class Name: wp_bootstrap_navwalker
+* GitHub URI: https://github.com/twittem/wp-bootstrap-navwalker
+
+3. Glyphicons
+
+ * http://getbootstrap.com/components/
+
+*/
+
+/* My Minimal WordPress Styling comes here */
+
+/* This is a small security for too long strings titles */
+body {
+	word-wrap: break-word;
+background-color:#f2f2f2;
+padding-left:3%;
+padding-right:3%	
+}
+
+/* Alignment */
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+}
+
+
+/* Images and wp-captions should always fit and be responsive */
+img {
+	display: inline-block;
+	height: auto;
+	max-width: 100%;
+}
+img[class*="wp-image-"] {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.wp-caption {
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+	max-width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0 10px;
+}
+.wp-caption.aligncenter {
+	margin-bottom: 10px;
+}
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+}
+.wp-caption .wp-caption-text {
+	text-align: center;
+	margin-top: 10px;
+}
+
+/* WP Gallery */
+.gallery {
+	margin-bottom: 1.5em;
+}
+.gallery a img {
+	border: none;
+	height: auto;
+	max-width: 90%;
+}
+.gallery dd {
+	margin: 0;
+}
+.gallery-caption {
+	display: block;
+}
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+.main-content-inner{
+
+	padding-top: 0em;
+}
+/* Content */
+.main-content-inner {
+	padding-bottom: 1.5em;
+}
+.hentry {
+	margin: 0 0 1.5em;
+}
+.sticky {
+	display: block;
+}
+.bypostauthor {
+	display: block;
+}
+
+
+/* Clearing */
+.clear {
+	clear: both;
+}
+
+/* Navigation */
+
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+.dropdown-submenu:active>.dropdown-menu, .dropdown-submenu:hover>.dropdown-menu {
+display: block;
+}
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:active>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+
+
+/* Here some needed widget styles
+ * Most widgets are adapted in the file bootstrap-wp.js - and REALLY easy to modify! ;) */
+.widget { margin-bottom: 2em; }
+.widget_nav_menu ul.sub-menu li, .widget_pages ul.children li { padding-left: 15px; }
+
+/* Hiding the search widget's button in widgets. thats just too old-skool. :) but if you want it back, just delete the next line.
+ * Note: you can change the whole appearance of the search_form() function in our searchform.php */
+.widget_search .search-form input[type="submit"] { display: none; }
+
+/* Make sure select elements fit in widgets */
+.widget select {
+	max-width: 100%;
+}
+
+/* Nested comments? They are threaded and nested already, you just need to add your own styling to finalize!
+ * For example with some margin, like the line below ;) Delete, modify, change classes in HTML if you desire another style */
+ .comment .children { margin-left: 1.5em; }
+
+/**
+* Some WP Theme Repository requirements
+*/
+
+.sticky {
+}
+
+.gallery-caption {
+
+}
+
+.bypostauthor {
+
+}
+
+.entry-meta {
+	clear: both;
+}
+
+.top-line
+{
+
+  margin-top:0px;
+  margin-bottom:0px;
+  border:0;
+  border-top:1px solid #F44336;
+}
+ .container{border-right: 0px solid #eee; border-left:  solid #eee; padding-left:0px;padding-right:0px;width:auto;}
+#main-container
+{
+padding-top:0px;
+	background-color:#fff;
+}
+.site-navigation
+{
+
+	position:relative;
+	top:0px;
+
+}
+#header_image
+{
+position:absolute;
+	top:0px;
+	right:0px;
+	left:0px;
+	max-height:700px;
+	height:auto;
+
+}
+
+
+#navbar-front {
+  background-color: rgb(247, 148, 29);
+ 
+  background-color: transparent;*/
+  
+  /*background-color: rgb(35, 40, 45);*/
+  margin-bottom:0px;
+  
+  
+ 
+  border-style: none;
+  
+  opacity: 1;
+  
+    
+    z-index: 100;
+    
+    
+  
+
+
+}
+
+
+
+
+#navbar-front .navbar-brand{
+
+
+color: #ffffff;
+ background: transparent;
+ border: 1px solid #009688;
+   border-radius: 4px;
+ font-size: 17px;
+ padding: 7px 12px;
+ font-weight: normal;
+ margin: 6px 0;
+ margin-right: 12px;
+ display: inline-block;
+ text-decoration: none;
+ font-family: 'Open Sans', sans-serif;
+ min-width: 120px;
+
+	}
+
+	#navbar-front .navbar-nav > li > a{
+
+color: #ffffff;
+ background: transparent;
+ border: 1px solid #EEEEEE;
+   border-radius: 4px;
+ font-size: 17px;
+ padding: 7px 12px;
+ font-weight: normal;
+ margin: 6px 0;
+ margin-right: 12px;
+ display: inline-block;
+ text-decoration: none;
+ font-family: 'Open Sans', sans-serif;
+ min-width: 120px;
+
+	}
+	#menu-item-30 >a
+	{
+background: #FF7043;
+
+	}
+#front-search-form
+{
+position:absolute;
+    width:auto;
+ 
+	top:80%;
+	right:25%;
+	left:25%;
+	
+}
+
+
+.panel, .panel-default, .front-page
+{
+
+  border-width: 1px;
+  border-color: rgb(17, 17, 17);
+  border-style: solid;
+  border-radius: 10px;
+  background-color: #616161;
+  font-size: 18px;
+  font-family: "Arial";
+  color:#ffffff;
+ 
+
+}
+
+
+
+.search-form{
+
+	
+}
+#front-search-text
+{
+
+border: 1px solid #ffffff;
+ border-radius: 4px;
+ font-size: 17px;
+ 
+ font-weight: normal;
+ font-family: 'Open Sans', sans-serif;
+min-width: 380px;
+opacity:0.80;
+color:#000000;
+}
+#front-search-text:focus + button {
+        z-index: 3;   
+
+}
+#front-search-addon
+{
+ border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#ffffff;
+
+}
+.btn-default .dropdown-toggle .front-search-dropdown
+{
+
+  background-color:red;
+}
+#front-search-button
+{
+color: #ffffff;
+ background: transparent;
+ border: 1px solid #EEEEEE;
+   border-radius: 4px;
+ font-size: 17px;
+ 
+ font-weight: normal;
+ font-family: 'Open Sans', sans-serif;
+ min-width: 120px;
+}
+#ghost-button-signin {
+ color: #ffffff;
+ background: transparent;
+ border: 1px solid #009688;
+ font-size: 17px;
+ padding: 7px 12px;
+ font-weight: normal;
+ margin: 6px 0;
+ margin-right: 12px;
+ display: inline-block;
+ text-decoration: none;
+ font-family: 'Open Sans', sans-serif;
+ min-width: 120px;
+}
+
+.ghost-button-signin:hover, .ghost-button-signin:active {
+  color:#fff;
+  background:#009688;
+}
+
+
+
+ 
+.hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  position: absolute;
+  overflow: hidden;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+  border-bottom: 1px solid #FFF;
+  border-top: 1px solid #FFF;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(0,1);
+  -ms-transform: scale(0,1);
+  transform: scale(0,1);
+}
+
+.hovereffect:hover .overlay {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.hovereffect:hover img {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+  filter: brightness(0.6);
+  -webkit-filter: brightness(0.6);
+}
+
+.hovereffect h2 {
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  background-color: transparent;
+  color: #FFF;
+  padding: 1em 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0,-100%,0);
+  transform: translate3d(0,-100%,0);
+}
+
+.hovereffect a, hovereffect p {
+  color: #FFF;
+  padding: 1em 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0,100%,0);
+  transform: translate3d(0,100%,0);
+}
+
+.hovereffect:hover a, .hovereffect:hover p, .hovereffect:hover h2 {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+ .hovereffect h5
+{
+margin-top:0px;
+}
+
+/* responsive horizontal carousel*/
+.jcarousel-wrapper {
+    margin: 0px auto;
+
+    position: relative;
+    border: 0px solid #fff;
+    width:100%
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 2px #999;
+    -moz-box-shadow: 0 0 2px #999;
+    box-shadow: 0 0 2px #fff;
+}
+
+/** Carousel **/
+
+.jcarousel {
+    position: relative;
+    
+    overflow: hidden;
+    width: auto;
+    margin-left:25px;
+    margin-right:25px;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel li {
+    
+
+    float: left;
+    border: 1px solid #fff;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.jcarousel-image-wrapper
+{
+
+height:170px; 
+
+}
+
+.jcarousel li img {
+  
+    display: block;
+    max-width: 100%;
+    max-height: 170px;
+    height:auto !important;
+    
+}
+
+
+
+
+
+/** Carousel Controls **/
+
+.jcarousel-control-prev,
+.jcarousel-control-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 4px #F0EFE7;
+    -moz-box-shadow: 0 0 4px #F0EFE7;
+    box-shadow: 0 0 4px #F0EFE7;
+}
+
+.jcarousel-control-prev {
+    left: -3px;
+}
+
+.jcarousel-control-next {
+    right: -3px;
+}
+
+/** Carousel Pagination **/
+
+.jcarousel-pagination {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    margin: 0;
+}
+
+.jcarousel-pagination a {
+    text-decoration: none;
+    display: inline-block;
+
+    font-size: 11px;
+    height: 10px;
+    width: 10px;
+    line-height: 10px;
+
+    background: #fff;
+    color: #4E443C;
+    border-radius: 10px;
+    text-indent: -9999px;
+
+    margin-right: 7px;
+
+
+    -webkit-box-shadow: 0 0 2px #4E443C;
+    -moz-box-shadow: 0 0 2px #4E443C;
+    box-shadow: 0 0 2px #4E443C;
+}
+
+.jcarousel-pagination a.active {
+    background: #4E443C;
+    color: #fff;
+    opacity: 1;
+
+    -webkit-box-shadow: 0 0 2px #F0EFE7;
+    -moz-box-shadow: 0 0 2px #F0EFE7;
+    box-shadow: 0 0 2px #F0EFE7;
+}
+.jcarousel-wrapper .jcarousel .thumbnails 
+ {
+
+ 	padding-left:20px;
+ 	padding-right:40px;
+ 	list-style:none;"
+ }
+ .jcarousel-wrapper .jcarousel .thumbnails .thumbnail
+ {
+
+ 	border:#ffffff;
+ }
+/* end responsive horizontal carousel*/
+/*-------------- END front page-----------------------*/
+
+
+
+
+/*==========style for profile page=======================*/
+
+
+
+ #navbar-profile {
+  background-color:#333;
+ 
+  
+  
+  /*background-color: rgb(35, 40, 45);*/
+  margin-bottom:0px;
+  
+  
+ 
+  border-style: none;
+  
+  opacity: 1;
+  
+    
+    z-index: 100;
+}
+
+
+
+#navbar-profile .navbar-brand{
+
+ border-radius: 4px;
+ font-family: 'Open Sans', sans-serif;
+ min-width: 120px;
+
+  }
+  .dropdown:hover .dropdown-menu {
+display: block;
+}
+
+#navbar-profile .navbar-nav > li > a{
+
+color:#ccc;
+
+  }
+#navbar-profile .navbar-nav > li > a:focus{
+
+background-color:#111;
+
+  }
+
+  #navbar-profile .navbar-nav > li > a:hover{
+
+background-color:#111;
+
+  }
+
+  #biodata
+  {
+
+
+    background-color:#ffffff;
+    border:#ffffff;
+    box-shadow:none;
+  }
+
+/*vertical jcarousel*/
+
+.jcarousel-wrapper-vertical {
+    margin: 20px auto;
+    position: relative;
+    border: 10px solid #fff;
+    width: 100%;
+    height: 300px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 0 2px #fff;
+       -moz-box-shadow: 0 0 2px #fff;
+            box-shadow: 0 0 2px #fff;
+}
+
+
+.jcarousel-wrapper-vertical .photo-credits {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.85);
+    opacity: .66;
+}
+
+.jcarousel-wrapper-vertical .photo-credits a {
+    color: #fff;
+}
+
+/** Carousel **/
+
+.jcarousel-vertical {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+}
+
+.jcarousel-vertical img {
+    display: block;
+}
+
+.jcarousel-vertical ul {
+    width: 100%;
+    height: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel-vertical li {
+    float: left;
+    border: 1px solid #fff;
+}
+
+/** Carousel Controls **/
+
+.jcarousel-control-prev-vertical,
+.jcarousel-control-next-vertical {
+    
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+       -moz-border-radius: 30px;
+            border-radius: 30px;
+    -webkit-box-shadow: 0 0 2px #999;
+       -moz-box-shadow: 0 0 2px #999;
+            box-shadow: 0 0 2px #999;
+}
+
+.jcarousel-control-prev-vertical {
+    margin-left:120px;
+}
+
+.jcarousel-control-next-vertical {
+    margin-left:120px;
+}
+
+.jcarousel-control-prev-vertical:hover span,
+.jcarousel-control-next-vertical:hover span {
+    display: block;
+}
+
+.jcarousel-control-prev-vertical.inactive,
+.jcarousel-control-next-vertical.inactive {
+    opacity: .5;
+    cursor: default;
+}
+
+/** Carousel Pagination **/
+
+.jcarousel-pagination-vertical {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+}
+
+.jcarousel-pagination-vertical a {
+    text-decoration: none;
+    display: inline-block;
+    
+    font-size: 11px;
+    line-height: 14px;
+    min-width: 14px;
+    
+    background: #fff;
+    color: #4E443C;
+    border-radius: 14px;
+    padding: 3px;
+    text-align: center;
+    
+    margin-right: 2px;
+    
+    opacity: .75;
+}
+
+.jcarousel-pagination-vertical a.active {
+    background: #4E443C;
+    color: #fff;
+    opacity: 1;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
+}
+
+
+
+/*end vertical carousel*/
+
+
+/*============end profile page styles====================*/
+/*
+ == Quick CSS styling tips ==
+
+ You can start off in a rough direction with some minimal styles.
+ See below for some tips. ;)
+
+
+ == Want to have the whole site wrapped? ==
+
+ Just fill the .container class with some background color to have a the whole site "wrapped".
+ This works so easy because every main part is wrapped only once into a container class by bootstrap.
+ Try out by decommenting the next line and go from there.
+
+ .container { background: #f9f9f9; border-right: 1px solid #eee; border-left: 1px solid #eee; }
+
+
+ == Want to wrap just the content and sidebar in Bootstrap style? ==
+
+ That one is a great example to show that some things are much cleaner and easier to do via just adding some HTML classes.
+ In this case, we will add just one CSS class "panel", look for example at the beginning in content.php!
+
+
+ == Infinite Scrolling by Jetpack ==
+ You can enable this cool feature by simply decommenting the lines below and make sure you use the same classes on the right place in your html..
+
+/* Globally hidden elements when Infinite Scroll is supported and in use.
+ * Older / Newer Posts Navigation (the pagination, must always be hidden), Theme Footer only when set to scrolling.. */
+
+/*
+.infinite-scroll .page-links,
+.infinite-scroll.neverending .site-footer {
+	display: none;
+}
+*/
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
+
+/*
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+*/
+
+/* Hey, if you don't need my comments anymore, just delete me! :)  */
+
+/*custom shuffle portfolio css*/
+
+
+ 
+.portfolio
+{
+ margin: 48px 0;
+}
+ 
+.portfolio-sorting
+{
+ text-transform: uppercase; 
+ font-size: 16px;
+ margin-bottom: 48px;
+}
+ 
+.portfolio-sorting li a 
+{
+ color: #808080;
+ text-decoration: none;
+ padding: 6px;
+}
+.portfolio-sorting li a:hover,
+.portfolio-sorting li a.active
+{
+ color: #2980b9;
+ border-bottom: 2px solid #2980b9;
+}
+ 
+.portfolio-item 
+{
+ margin-bottom: 30px;
+}
