@@ -149,11 +149,11 @@
     {
     ?>
     <div id="popup<?php echo $j;?>" style="background-color: rgba(40, 123, 188, 0.44);<?php if($j!=1){?>display:none;<?php }?>">
-    <h2>About</h2>
+    <h2 class="text-center">Summary</h2>
     <form  name="form_user_desc" action="" id="form_user_desc">
     <input type="hidden" name="id_user_desc" id="id_user_desc" value="<?php echo $j;?>"/>
     <div class="form-group">
-    <label >Tell us something about yourself</label>
+    <label >Adding a summary is a quick and easy way to highlight your experience and interests.</label>
     <textarea name="text_user_desc" class="form-control" id="text_user_desc" placeholder="About"></textarea>
     </div>
     <button type="button" name="button_user_desc"  id="button_user_desc" class="btn btn-default">Save</button>
@@ -171,7 +171,7 @@
     ?>
      <div id="popup<?php echo $j;?>" style="background-color: rgba(40, 123, 188, 0.44);<?php if($j!=1){?>display:none;<?php }?>">
 
-      <h2>Do you proide any services?</h2>
+      <h2 class="text-center">Do you proide any services?</h2>
     <form  name="form_is_freelancer" action="" id="form_is_freelancer">
     <input type="hidden" name="id_is_freelancer" id="id_is_freelancer" value="<?php echo $j;?>"/>
     
@@ -188,7 +188,7 @@
     No
    </label>
   </div>
-  <div style="display:none;" id="box_is_freelancer">
+  <div class="form-group" style="display:none;" id="box_is_freelancer">
    What are your services?
   <select class="form-control" name="serviceslist_is_freelancer" id="serviceslist_is_freelancer">
   <option>1</option>
@@ -209,22 +209,46 @@
 
      //freelancer desc,audio,video if freelancer meta  is not filled before
 
-       global $wpdb;
+       /*global $wpdb;
      $s_result= get_user_meta( $user_id,"cm_list_services", true );//query to get lit of services freelancer has selected
+     */
      $k=1;
+     $s_result=array("Web developer","Audio Production");
      foreach($s_result as $service_value)
      {
-
+          
      ?> 
-      <form id="popup_freelancer_related<?php echo $k;?>" style="display:none;">
+      <form id="form_freelancer_related<?php echo $k;?>" style="display:none;background-color: rgba(40, 123, 188, 0.44);">
+        <h2 class="text-center">For <?php echo $service_value;?> service</h2>
+
       <input type="hidden" name="id_freelancer_related" value="<?php echo $k;?>">
-      <?php if($k==sizeof($s_result)){
+      <?php if($k==count($s_result)){
         ?>
         <input type="hidden" name="freelancer_related_last" value="<?php echo $j;?>">
         <?php
         }//end if
         ?>
-      <button type="button" name="" id="button_freelancer_related<?php echo $k;?>">
+
+        <div class="form-group">
+        <label for="">Write a description about yourself</label>
+        <textarea name="desc_freelancer"></textarea>
+        </div>
+
+        <div class="form-group">
+        <label for="">Upload images for your portfolio</label>
+        <input type="file" class="form-control"  name="image_freelancer">
+        </div>
+
+        <div class="form-group">
+        <label for="">Upload audios for your portfolio</label>
+        <input type="file" class="form-control"  name="audio_freelancer">
+        </div>
+
+        <div class="form-group">
+        <label for="">Upload videos for your portfolio</label>
+        <input type="file" class="form-control"  name="video_freelancer">
+        </div>
+      <button type="button" name="" id="button_freelancer_related<?php echo $k;?>" class="btn btn-default">Save</button>
       </form>
      <?php
      $k++;
@@ -349,7 +373,7 @@
     ?>
      <div id="popup<?php echo $j;?>" style="background-color: rgba(40, 123, 188, 0.44);<?php if($j!=1){?>display:none;<?php }?>">
 
-      <h2>Content</h2>
+      <h2 class="text-center">Are you a content creator?</h2>
     <form  name="form_is_content_creator" action="" id="form_is_content_creator">
     <input type="hidden" name="id_is_content_creator" id="id_is_content_creator" value="<?php echo $j;?>"/>
     <div class="radio">
@@ -382,7 +406,7 @@
     ?>
      <div id="popup<?php echo $j;?>" style="background-color: rgba(40, 123, 188, 0.44);<?php if($j!=1){?>display:none;<?php }?>">
 
-      <h2>Employee</h2>
+      <h2 class="text-center">Are you looking for any service?</h2>
     <form  name="form_is_employer" action="" id="form_is_employer">
     <input type="hidden" name="id_is_employer" id="id_is_employer" value="<?php echo $j;?>"/>
     <div class="radio">
@@ -433,7 +457,7 @@
   <section class="biodata">
 <div class="well well-lg" id="biodata">
 <h2 class="text-center">About</h2>
-p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theophrastus. Omnesque phaedrum temporibus no quo. Vocent senserit salutandi eam ut, eu zril verterem iracundia has. Te quo natum utamur alienum, usu veniam doctus vituperata cu, dicta minim definitiones ei mel. Per meliore suscipiantur ei, qui eu modo tation. Id duo natum eligendi.
+<p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theophrastus. Omnesque phaedrum temporibus no quo. Vocent senserit salutandi eam ut, eu zril verterem iracundia has. Te quo natum utamur alienum, usu veniam doctus vituperata cu, dicta minim definitiones ei mel. Per meliore suscipiantur ei, qui eu modo tation. Id duo natum eligendi.
 
 </p>
 </div>
@@ -446,21 +470,21 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
 
 <!-- frelancer-->
 <section class="freelancer" >
-<div class="well well-lg" style="background-color:#ffffff;">
-<h2 class="text-center">Freelncer</h2>
-
+<div class="well well-lg" style="background-color:#ffffff;border:solid #ffffff;">
+<h2 class="text-center">Freelancer</h2>
+<h4 class="text-center"> Provides services in Web development, content writing and audio production</h4>
 <hr>
 
-
+<h2 class="text-center">Portfolio</h2>
 <section class="portfolio">
   <div class="container">
     <div class="row">
  
       <ul class="portfolio-sorting list-inline text-center">
         <li><a href="#" data-group="all" class="active">All</a></li>
-        <li><a href="#" data-group="people">People</a></li>
-        <li><a href="#" data-group="simpsons">Simpsons</a></li>
-        <li><a href="#" data-group="futurama">Futurama</a></li>
+        <li><a href="#" data-group="people">Images</a></li>
+        <li><a href="#" data-group="simpsons">Audios</a></li>
+        <li><a href="#" data-group="futurama">Videos</a></li>
       </ul> <!--end portfolio sorting -->
  
       <ul class="portfolio-items list-unstyled" id="grid">
@@ -468,7 +492,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["people"]'>
           <figure class="portfolio-item">
             <a href="#">
-              <img src="http://lorempixel.com/700/400/people/1" alt="Item 1" class="img-responsive">
+              <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/baseball.jpg" alt="Item 1" class="img-responsive">
             </a>
           </figure>
         </li>
@@ -476,7 +500,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["people"]'>
             <figure class="portfolio-item">
                 <a href="#">
-                    <img src="http://lorempixel.com/700/400/people/7" alt="" class="img-responsive">
+                    <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/vestride-classy.jpg" alt="" class="img-responsive">
                 </a>
             </figure>
         </li>
@@ -484,7 +508,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
        <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["futurama"]'>
           <figure class="portfolio-item">
               <a href="#">
-                  <img src="http://lorempicsum.com/futurama/700/400/1" alt="" class="img-responsive">
+                  <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/newegg.png" alt="" class="img-responsive">
               </a>
           </figure>
         </li>
@@ -492,7 +516,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["futurama"]'>
           <figure class="portfolio-item">
               <a href="#">
-                  <img src="http://lorempicsum.com/futurama/700/400/2" alt="" class="img-responsive">
+                  <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/baseball.jpg" alt="" class="img-responsive">
               </a>
           </figure>
         </li>
@@ -500,7 +524,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["simpsons", "people"]'>
           <figure class="portfolio-item">
               <a href="#">
-                  <img src="http://lorempicsum.com/simpsons/700/400/1" alt="" class="img-responsive">
+                  <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/baseball.jpg" alt="" class="img-responsive">
               </a>
           </figure>
         </li>
@@ -508,7 +532,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["simpsons"]'>
           <figure class="portfolio-item">
               <a href="#">
-                  <img src="http://lorempicsum.com/simpsons/700/400/3" alt="" class="img-responsive">
+                  <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/baseball.jpg" alt="" class="img-responsive">
               </a>
           </figure>
         </li>
@@ -516,7 +540,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["people"]'>
             <figure class="portfolio-item">
                 <a href="#">
-                    <img src="http://lorempixel.com/700/400/people/9" alt="" class="img-responsive">
+                    <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/baseball.jpg" alt="" class="img-responsive">
                 </a>
             </figure>
         </li>
@@ -524,7 +548,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
          <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["simpsons"]'>
           <figure class="portfolio-item">
               <a href="#">
-                  <img src="http://lorempicsum.com/simpsons/700/400/4" alt="" class="img-responsive">
+                  <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/baseball.jpg" alt="" class="img-responsive">
               </a>
           </figure>
         </li>
@@ -532,7 +556,7 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
         <li class="col-md-4 col-sm-4 col-xs-6" data-groups='["futurama"]'>
           <figure class="portfolio-item">
               <a href="#">
-                  <img src="http://lorempicsum.com/futurama/700/400/5" alt="" class="img-responsive">
+                  <img src="http://localhost/producerroom/wp-content/plugins/custom-shuffle-portfolio/img/originals/pumpkin.jpg" alt="" class="img-responsive">
               </a>
           </figure>
         </li>
@@ -552,121 +576,20 @@ p>Lorem ipsum dolor sit amet, ex mucius eligendi recusabo nam, an mei sumo theop
 
 </section>
 <!--end freelancer-->
-<script>
 
 
-
-var shuffleme = (function( $ ) {
-
-  'use strict';
-
-  var $grid = $('#grid'), //locate what we want to sort 
-
-      $filterOptions = $('.portfolio-sorting li'),  //locate the filter categories
-      $sizer = $grid.find('.shuffle_sizer'),    //sizer stores the size of the items
- 
-  init = function() {
-
- 
-    // None of these need to be executed synchronously
-    setTimeout(function() {
-      listen();
-      setupFilters();
-    }, 100);
- 
-    // instantiate the plugin
-    $grid.shuffle({
-      itemSelector: '[class*="col-"]',
-      sizer: $sizer    
-    });
-  },      
- 
-  // Set up button clicks
-  setupFilters = function() {
-    var $btns = $filterOptions.children();
-    $btns.on('click', function(e) {
-
-      e.preventDefault();
-
-      var $this = $(this),
-          isActive = $this.hasClass( 'active' ),
-          group = isActive ? 'all' : $this.data('group');
- 
-      // Hide current label, show current label in title
-      if ( !isActive ) {
-        $('.portfolio-sorting li a').removeClass('active');
-      }
- 
-      $this.toggleClass('active');
-      
-      // Filter elements
-      $grid.shuffle( 'shuffle', group );
-
-    });
- 
-    $btns = null;
-  },
- 
-  // Re layout shuffle when images load. This is only needed
-  // below 768 pixels because the .picture-item height is auto and therefore
-  // the height of the picture-item is dependent on the image
-  // I recommend using imagesloaded to determine when an image is loaded
-  // but that doesn't support IE7
-  listen = function() {
-    var debouncedLayout = $.throttle( 300, function() {
-      $grid.shuffle('update');
-    });
- 
-    // Get all images inside shuffle
-    $grid.find('img').each(function() {
-      var proxyImage;
- 
-      // Image already loaded
-      if ( this.complete && this.naturalWidth !== undefined ) {
-        return;
-      }
- 
-      // If none of the checks above matched, simulate loading on detached element.
-      proxyImage = new Image();
-      $( proxyImage ).on('load', function() {
-        $(this).off('load');
-        debouncedLayout();
-      });
- 
-      proxyImage.src = this.src;
-    });
- 
-    // Because this method doesn't seem to be perfect.
-    setTimeout(function() {
-      debouncedLayout();
-    }, 500);
-  };      
- 
-  return {
-    init: init
-  };
-}( jQuery ));
- 
-jQuery(document).ready(function()
-{
-  shuffleme.init(); //filter portfolio
-});
-
-</script>
-
-
-
+<!--
   <section class="content_creator">
 <div class="well well-lg" style="background-color: rgba(40, 123, 188, 0.44);">
 <h2 class="text-center">Content creator</h2>
 
-<?php echo do_shortcode("[huge_it_portfolio id='2']"); ?>
+<?php //echo do_shortcode("[huge_it_portfolio id='2']"); ?>
 
 
 </div>
 
 </section>
-
+-->
 
 
 
